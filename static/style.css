@@ -1,0 +1,5 @@
+body { font-family: system-ui, sans-serif; margin: 1rem auto; max-width: 800px; }
+h1 { margin-bottom: .25rem; }
+section { margin: 1rem 0; }
+.flash { background: #fffbe6; border: 1px solid #f0e1a0; padding: .5rem; }
+.overdue { color: #b10000; }

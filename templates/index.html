@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="add">
+  <h2>Add Task</h2>
+  <form action="{{ url_for('add') }}" method="post">
+    <input name="name" placeholder="Task title" required>
+    <input name="due_date" type="date" required>
+    <select name="priority">
+      <option value="high">High</option>
+      <option value="med" selected>Medium</option>
+      <option value="low">Low</option>
+    </select>
+    <input name="category" placeholder="Category (e.g., School, Writing)">
+    <button type="submit">Add</button>
+  </form>
+</section>
+
+<section class="today">
+  <h2>Today</h2>
+  <ul>
+    {% for t in today %}
+      <li><strong>{{ t.name }}</strong> — {{ t.due_date.date() }} ({{ t.priority }})</li>
+    {% else %}
+      <li>No tasks due today.</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="overdue">
+  <h2>Overdue</h2>
+  <ul>
+    {% for t in overdue %}
+      <li class="overdue"><strong>{{ t.name }}</strong> — {{ t.due_date.date() }} ({{ t.priority }})</li>
+    {% else %}
+      <li>No overdue tasks. 🎉</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="all">
+  <h2>All Tasks</h2>
+  <ul>
+    {% for t in tasks %}
+      <li>
+        {{ t.name }} — {{ t.due_date.date() }} ({{ t.priority }}) [{{ t.category or "Uncategorized" }}]
+        <form style="display:inline" action="{{ url_for('delete', name=t.name) }}" method="post">
+          <button>Delete</button>
+        </form>
+      </li>
+    {% else %}
+      <li>No tasks yet.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
