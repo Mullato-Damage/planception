@@ -1,4 +1,4 @@
-﻿﻿# Planception: A Smart Task Manager for Multidisciplinary Minds
+﻿﻿﻿# Planception: A Smart Task Manager for Multidisciplinary Minds
 
 Planception is a lightweight task management application designed to help students, professionals, and creatives with ADHD or multidisciplinary projects stay organized. The system supports creating, categorizing, and prioritizing tasks across different domains (school, work, writing, publishing, etc.). The goal is to provide structure while remaining simple and distraction-free, with a foundation for future AI assistant integration.
 
@@ -121,4 +121,5 @@ Planception was created by Terione Martin as part of a Software Engineering cour
 ## License
 
 This project is for academic purposes. For reuse or modification, please provide attribution.
+
 
