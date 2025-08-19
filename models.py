@@ -22,9 +22,9 @@ class Task(db.Model):
     category  = db.Column(db.String(100), nullable=True)
     status    = db.Column(db.String(20), nullable=False, default=TaskStatus.OPEN.value)
 
-    def is_overdue(self, now: datetime | None = None) -> bool:
-        now = now or datetime.now()
-        return self.due_date < now and self.status == TaskStatus.OPEN.value
+    def is_overdue(self, today: date | None = None) -> bool:
+        today = today or date.today()
+        return self.due_date.date() < today and self.status == TaskStatus.OPEN.value
 
     def is_due_today(self, today: date | None = None) -> bool:
         today = today or date.today()
