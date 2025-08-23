@@ -1,18 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+    <!--
+    Base template for Planception.
+    Defines the global page shell (headings, styles, flash messages),
+    and exposes a {# content #} block for per-page content.
+  -->
+  <meta charset="utf-8"/> 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Planception</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to CSS file -->
 </head>
 <body>
   <header><h1>Planception</h1></header>
+  <!--
+    Flash message area: shows feedback after actions (add/delete/validation).
+    `get_flashed_messages()` comes from Flask; messages are queued on redirect.
+  -->
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <ul class="flash">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>
     {% endif %}
   {% endwith %}
-  <main>{% block content %}{% endblock %}</main>
+  
+  <main>{% block content %}{% endblock %}</main> <!-- Main content block to be filled by child templates (e.g., index.html) -->
 </body>
 </html>

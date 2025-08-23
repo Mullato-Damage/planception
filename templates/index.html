@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+
+<!-- Form to add a new task -->
 <section class="add">
   <h2>Add Task</h2>
   <form action="{{ url_for('add') }}" method="post">
@@ -15,6 +17,7 @@
   </form>
 </section>
 
+<!-- Today’s tasks -->
 <section class="today">
   <h2>Today</h2>
   <ul>
@@ -26,6 +29,7 @@
   </ul>
 </section>
 
+<!-- Overdue tasks -->
 <section class="overdue">
   <h2>Overdue</h2>
   <ul>
@@ -37,12 +41,14 @@
   </ul>
 </section>
 
+<!-- All tasks with delete option -->
 <section class="all">
   <h2>All Tasks</h2>
   <ul>
     {% for t in tasks %}
       <li>
         {{ t.name }} — {{ t.due_date.date() }} ({{ t.priority }}) [{{ t.category or "Uncategorized" }}]
+        <!-- inline delete form -->
         <form style="display:inline" action="{{ url_for('delete', name=t.name) }}" method="post">
           <button>Delete</button>
         </form>
